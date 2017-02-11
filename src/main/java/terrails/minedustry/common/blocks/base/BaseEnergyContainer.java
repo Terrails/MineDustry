@@ -33,17 +33,12 @@ public class BaseEnergyContainer extends TileEntity implements IEnergyStorage, I
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing)
     {
- /*       return capability == Capabilities.ENERGY_STORAGE_CAPABILITY
-                || capability == Capabilities.ENERGY_ACCEPTOR_CAPABILITY */
- return capability == Capabilities.ENERGY
-                || super.hasCapability(capability, facing);
+        return capability == Capabilities.ENERGY || super.hasCapability(capability, facing);
     }
 
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing)
     {
-    /*    if(capability == Capabilities.ENERGY_STORAGE_CAPABILITY || capability == Capabilities.ENERGY_ACCEPTOR_CAPABILITY ||
-                capability == Capabilities.CABLE_OUTPUTTER_CAPABILITY) */
     if(capability == Capabilities.ENERGY)
         {
             return (T)this;
@@ -56,7 +51,7 @@ public class BaseEnergyContainer extends TileEntity implements IEnergyStorage, I
         this.deserializeNBT(dataTag);
     }
 
-    @Override
+
     public NBTTagCompound serializeNBT() {
         final NBTTagCompound dataTag = new NBTTagCompound();
 
@@ -68,7 +63,7 @@ public class BaseEnergyContainer extends TileEntity implements IEnergyStorage, I
         return dataTag;
     }
 
-    @Override
+
     public void deserializeNBT(NBTTagCompound nbt) {
         if (nbt.hasKey("TFStored"))
             this.stored = nbt.getInteger("TFStored");

@@ -42,9 +42,8 @@ public class BlockBasicBattery extends CoreBlock implements ITileEntityProvider 
 
     private static final PropertyDirection FACING = BlockHorizontal.FACING;
     private String name = "basic_battery";
-    public int energyStored;
-    public int energyMax;
-    public static final Set<Block> BLOCKS = new HashSet<>();
+  //  public int energyStored;
+ //   public int energyMax;
 
 
     public BlockBasicBattery() {
@@ -62,6 +61,14 @@ public class BlockBasicBattery extends CoreBlock implements ITileEntityProvider 
         GameRegistry.register(new ItemBlock(this), getRegistryName());
     }
 
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand,
+                                    @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+        TileEntityBasicBattery te = (TileEntityBasicBattery) worldIn.getTileEntity(pos);
+        if (playerIn.getActiveHand() == hand.MAIN_HAND || playerIn.getActiveHand() == hand.OFF_HAND)
+            playerIn.sendStatusMessage(new TextComponentString(te.getEnergyStored() + "/" + te.maxEnergy));
+        return true;
+    }
 
     @Override
     public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
@@ -79,7 +86,6 @@ public class BlockBasicBattery extends CoreBlock implements ITileEntityProvider 
             if (((TileEntityBasicBattery) te).containsEnergy()) {
                 NBTTagCompound compound = new NBTTagCompound();
                 ((TileEntityBasicBattery) te).writeToNBT(compound);
-                //     stack.setTagCompound(tag);
                 compound.removeTag("x");
                 compound.removeTag("y");
                 compound.removeTag("z");
@@ -112,17 +118,12 @@ public class BlockBasicBattery extends CoreBlock implements ITileEntityProvider 
         world.setBlockState(pos, state.withProperty(FACING, entity.getHorizontalFacing().getOpposite()), 2);
     }
 
-    @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand,
-                                    @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-        TileEntityBasicBattery te = (TileEntityBasicBattery) worldIn.getTileEntity(pos);
-        if (playerIn.getActiveHand() == hand.MAIN_HAND || playerIn.getActiveHand() == hand.OFF_HAND)
-            playerIn.sendStatusMessage(new TextComponentString(te.storedEnergy + "/" + te.maxEnergy));
-        this.energyStored = te.storedEnergy;
-        this.energyMax = te.maxEnergy;
-        return true;
 
-    }
+
+
+
+
+
 
     private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state) {
         if (!worldIn.isRemote) {
@@ -197,6 +198,11 @@ public class BlockBasicBattery extends CoreBlock implements ITileEntityProvider 
     protected ItemBlockBasicBattery getItemBlock(){
         return new ItemBlockBasicBattery(this);
     }
+
+
+
+
+
 
     public class ItemBlockBasicBattery extends ItemBlock {
 
