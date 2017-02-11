@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "custom": { "flip-v": true },
+    "model": "minedustry:solar_panel",
+    "particle": "minedustry:blocks/solar"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

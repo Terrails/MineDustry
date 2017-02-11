@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "minedustry:basic_battery" },
+    "facing=south": { "model": "minedustry:basic_battery", "y": 180 },
+    "facing=west":  { "model": "minedustry:basic_battery", "y": 270 },
+    "facing=east":  { "model": "minedustry:basic_battery", "y": 90 }
+  }
+}

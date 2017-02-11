@@ -1,0 +1,12 @@
+{
+  "parent": "minedustry:block/pedestalblock",
+  "display": {
+    "gui": {
+      "rotation": [
+        0,
+        180,
+        0
+      ]
+    }
+  }
+}

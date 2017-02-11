@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "minedustry:fastLitFurnace" },
+    "facing=south": { "model": "minedustry:fastLitFurnace", "y": 180 },
+    "facing=west":  { "model": "minedustry:fastLitFurnace", "y": 270 },
+    "facing=east":  { "model": "minedustry:fastLitFurnace", "y": 90 }
+  }
+}

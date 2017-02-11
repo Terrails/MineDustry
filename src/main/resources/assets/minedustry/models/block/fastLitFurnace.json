@@ -1,0 +1,8 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "top": "minedustry:blocks/machineSide",
+    "front": "minedustry:blocks/fastFurnaceFrontlit",
+    "side": "minedustry:blocks/machineSide"
+  }
+}

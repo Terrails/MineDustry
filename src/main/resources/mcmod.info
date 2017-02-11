@@ -1,0 +1,16 @@
+[
+{
+  "modid": "minedustry",
+  "name": "MineDustry",
+  "description": "Various machines, blocks, items and features",
+  "version": "$version",
+  "logoFile": "",
+  "mcversion": "$mcversion",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["Terrails"],
+  "parent":"",
+  "screenshots": [],
+  "dependencies": []
+}
+]

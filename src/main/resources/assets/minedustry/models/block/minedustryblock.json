@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "particle": "#front",
+    "down": "minedustry:blocks/machineSide",
+    "up": "minedustry:blocks/machineTop",
+    "north": "#front",
+    "east": "minedustry:blocks/machineSide",
+    "south": "minedustry:blocks/machineSide",
+    "west": "minedustry:blocks/machineSide"
+  }
+}
