@@ -1,4 +1,4 @@
-package terrails.minedustry.common.blocks.base;
+package terrails.terracore.energy;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -60,7 +60,7 @@ public class BaseEnergyContainer extends TileEntity implements IEnergyStorage, I
         dataTag.setInteger("TFInput", this.input);
         dataTag.setInteger("TFOutput", this.output);
 
-        return dataTag;
+        return serializeNBT();
     }
 
 
@@ -113,6 +113,7 @@ public class BaseEnergyContainer extends TileEntity implements IEnergyStorage, I
         if (this.stored > capacity)
             this.stored = capacity;
     }
+
 
     public int getMaxInput() {
         return this.input;

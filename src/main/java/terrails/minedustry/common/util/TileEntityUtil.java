@@ -18,11 +18,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import terrails.minedustry.Constants;
-import terrails.minedustry.common.blocks.base.TileEntityBase;
 import terrails.minedustry.common.blocks.machine.battery.TileEntityBasicBattery;
 import terrails.minedustry.common.blocks.machine.generator.solar.TileEntitySolarPanel;
-
-import java.util.ConcurrentModificationException;
 
 public abstract class TileEntityUtil extends TileEntity implements ITickable {
 

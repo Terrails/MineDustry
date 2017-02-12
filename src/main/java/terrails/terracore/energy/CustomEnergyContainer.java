@@ -1,12 +1,24 @@
-package terrails.minedustry.common.blocks.base;
+package terrails.terracore.energy;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.energy.EnergyStorage;
 
 public class CustomEnergyContainer extends EnergyStorage {
 
+    private int stored;
+    private int capacity;
+    private int input;
+    private int output;
+
     public CustomEnergyContainer(int capacity, int maxReceive, int maxExtract){
         super(capacity, maxReceive, maxExtract);
+    }
+
+    public int getMaxInput() {
+        return maxReceive;
+    }
+    public int getMaxOutput() {
+        return maxExtract;
     }
 
     public int extractEnergyInternal(int maxExtract, boolean simulate){

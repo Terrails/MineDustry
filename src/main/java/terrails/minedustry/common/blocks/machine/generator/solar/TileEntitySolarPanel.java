@@ -5,7 +5,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
-import terrails.minedustry.common.blocks.base.BaseEnergyContainer;
+import terrails.terracore.energy.BaseEnergyContainer;
 
 public class TileEntitySolarPanel extends BaseEnergyContainer implements ITickable{
 
