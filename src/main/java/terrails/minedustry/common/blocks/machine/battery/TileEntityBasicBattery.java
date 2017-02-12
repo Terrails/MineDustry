@@ -84,7 +84,7 @@ public class TileEntityBasicBattery extends BaseEnergyContainer implements ITick
                     IEnergyStorage consumer = tileEntity.getCapability(CapabilityEnergy.ENERGY, EnumFacing.DOWN);
 
                     if (consumer != null)
-                        this.extractEnergy(consumer.extractEnergy(output, false), false);
+                        this.extractEnergy(consumer.extractEnergy(getMaxEnergyExtract(), false), false);
 
                     this.markDirty();
                 }

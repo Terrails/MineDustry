@@ -42,8 +42,6 @@ public class BlockBasicBattery extends CoreBlock implements ITileEntityProvider 
 
     private static final PropertyDirection FACING = BlockHorizontal.FACING;
     private String name = "basic_battery";
-  //  public int energyStored;
- //   public int energyMax;
 
 
     public BlockBasicBattery() {
@@ -117,13 +115,18 @@ public class BlockBasicBattery extends CoreBlock implements ITileEntityProvider 
     public void onBlockPlacedBy(World world, BlockPos pos, IBlockState state, EntityLivingBase entity, ItemStack stack) {
         world.setBlockState(pos, state.withProperty(FACING, entity.getHorizontalFacing().getOpposite()), 2);
     }
+    @SideOnly(Side.CLIENT)
+    public void initModel() {
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+    }
 
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
+        return new TileEntityBasicBattery();
+    }
 
-
-
-
-
-
+    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+    }
 
     private void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state) {
         if (!worldIn.isRemote) {
@@ -147,18 +150,6 @@ public class BlockBasicBattery extends CoreBlock implements ITileEntityProvider 
         }
     }
 
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
-
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEntityBasicBattery();
-    }
-
-    public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
-    }
 
     public EnumBlockRenderType getRenderType(IBlockState state) {
         return EnumBlockRenderType.MODEL;
