@@ -4,7 +4,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.energy.CapabilityEnergy;
+import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.energy.IEnergyStorage;
 import terrails.terracore.energy.BaseEnergyContainer;
 
@@ -13,6 +15,7 @@ public class TileEntityBasicBattery extends BaseEnergyContainer implements ITick
     final int input = 2500;
     final int output = 2500;
     final int maxEnergy = 1000000;
+    int energyStored = getEnergyStored();
 
 
     public TileEntityBasicBattery() {
@@ -24,17 +27,17 @@ public class TileEntityBasicBattery extends BaseEnergyContainer implements ITick
 
     @Override
     public void readFromNBT(NBTTagCompound compound) {
+
         int storedEnergy = getEnergyStored();
         storedEnergy = compound.getInteger("energy");
-
         // I even tried this:
-      //  compound.getInteger("energy");
+        //   energyStored = compound.getInteger("energy");
     }
+
     @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
-    {
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         compound.setInteger("energy", getEnergyStored());
-        return super.writeToNBT(compound);
+        return compound;
     }
 
     public final int getStoredEnergy()

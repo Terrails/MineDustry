@@ -5,6 +5,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.INBTSerializable;
+import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.energy.IEnergyStorage;
 import terrails.minedustry.common.capabilities.Capabilities;
 
@@ -14,6 +15,7 @@ public class BaseEnergyContainer extends TileEntity implements IEnergyStorage, I
     private int capacity;
     private int input;
     private int output;
+    protected EnergyStorage storage = new EnergyStorage(32000);
 
     public BaseEnergyContainer() {
         this(250, 250, 250);
