@@ -27,6 +27,7 @@ public class TileEntityBasicBattery extends BaseEnergyContainer implements ITick
         int storedEnergy = getEnergyStored();
         storedEnergy = compound.getInteger("energy");
 
+        // I even tried this:
       //  compound.getInteger("energy");
     }
     @Override
